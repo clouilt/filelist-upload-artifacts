@@ -1,0 +1,73 @@
+name: 'upload each as artifact'
+desciption: ''
+inputs:
+    filels:
+        description: 'file list'
+        required: true
+    sep:
+        description: 'separator'
+        required: true
+        default: " "
+runs:
+    using: 'composite'
+    steps:
+        - uses: jungwinter/split@v2
+          id: files
+          with:
+              msg: ${{ inputs.filels }}
+              separator: ${{ inputs.sep }}
+          
+        - uses: kittaakos/upload-artifact-as-is@v0
+          if: ${{ steps.files.outputs._0 != '' }}
+          with:
+              path: ${{ steps.files.outputs._0 }}
+              # if-no-files-found: ignore # 'warn' or 'ignore' are also available, defaults to `warn`
+              
+        - uses: kittaakos/upload-artifact-as-is@v0
+          if: ${{ steps.files.outputs._1 != '' }}
+          with:
+              path: ${{ steps.files.outputs._1 }}
+              # if-no-files-found: ignore # 'warn' or 'ignore' are also available, defaults to `warn`
+              
+        - uses: kittaakos/upload-artifact-as-is@v0
+          if: ${{ steps.files.outputs._2 != '' }}
+          with:
+              path: ${{ steps.files.outputs._2 }}
+              # if-no-files-found: ignore # 'warn' or 'ignore' are also available, defaults to `warn`
+              
+        - uses: kittaakos/upload-artifact-as-is@v0
+          if: ${{ steps.files.outputs._3 != '' }}
+          with:
+              path: ${{ steps.files.outputs._3 }}
+              # if-no-files-found: ignore # 'warn' or 'ignore' are also available, defaults to `warn`
+              
+        - uses: kittaakos/upload-artifact-as-is@v0
+          if: ${{ steps.files.outputs._4 != '' }}
+          with:
+              path: ${{ steps.files.outputs._4 }}
+              # if-no-files-found: ignore # 'warn' or 'ignore' are also available, defaults to `warn`
+              
+        - uses: kittaakos/upload-artifact-as-is@v0
+          if: ${{ steps.files.outputs._5 != '' }}
+          with:
+              path: ${{ steps.files.outputs._5 }}
+              # if-no-files-found: ignore # 'warn' or 'ignore' are also available, defaults to `warn`
+              #
+        - uses: kittaakos/upload-artifact-as-is@v0
+          if: ${{ steps.files.outputs._6 != '' }}
+          with:
+              path: ${{ steps.files.outputs._6 }}
+              # if-no-files-found: ignore # 'warn' or 'ignore' are also available, defaults to `warn`
+                           
+        - uses: kittaakos/upload-artifact-as-is@v0
+          if: ${{ steps.files.outputs._7 != '' }}
+          with:
+              path: ${{ steps.files.outputs._7 }}
+              # if-no-files-found: ignore # 'warn' or 'ignore' are also available, defaults to `warn`
+              #
+        - uses: kittaakos/upload-artifact-as-is@v0
+          if: ${{ steps.files.outputs._8 != '' }}
+          with:
+              path: ${{ steps.files.outputs._8 }}
+              # if-no-files-found: ignore # 'warn' or 'ignore' are also available, defaults to `warn`
+                           
